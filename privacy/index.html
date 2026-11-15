@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How the development version of Raspi Cloud Sync Pro handles Google Drive permissions, backup files, local records, credentials and retention.">
+  <title>Privacy policy — Raspi Cloud Sync Pro</title>
+  <link rel="canonical" href="https://rtariq2015.github.io/privacy/">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="../">Raspi Cloud Sync Pro</a>
+      <nav aria-label="Main navigation">
+        <a href="../">Home</a>
+        <a href="./" aria-current="page">Privacy policy</a>
+        <a href="https://github.com/rtariq2015/raspi-cloud-sync-pro/issues">Support</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container" tabindex="-1">
+    <p class="eyebrow">Raspi Cloud Sync Pro</p>
+    <h1>Privacy policy</h1>
+    <p class="notice"><strong>Effective date:</strong> <time datetime="2026-11-14">November 14, 2026</time></p>
+
+    <section aria-labelledby="about">
+      <h2 id="about">About the application</h2>
+      <p>Raspi Cloud Sync Pro is open-source software operated on a Raspberry Pi controlled by its owner or organization. The project is maintained by GitHub user rtariq2015. Its Google Drive backup functions run on that device and communicate with Google. The reviewed design does not provide a separate project-operated cloud storage service.</p>
+    </section>
+
+    <section aria-labelledby="permissions">
+      <h2 id="permissions">Google permissions</h2>
+      <p>The application requests <code>https://www.googleapis.com/auth/drive.file</code>.</p>
+      <p>This permission limits access to files and folders created by, opened with, or otherwise authorized for the application. It does not grant unrestricted access to every file in your Drive. It permits file management, including changes and deletion, within that authorized access; it is not a read-only permission. The current backup workflow uses it to upload versioned backups and read their contents for verification, without automatic deletion. See <a href="https://developers.google.com/workspace/drive/api/guides/api-specific-auth">Google’s scope description</a>.</p>
+      <p>Google handles account sign-in. The application receives OAuth authorization tokens rather than your Google password. Offline authorization allows the backup worker to obtain access while you are not actively signing in.</p>
+    </section>
+
+    <section aria-labelledby="processing">
+      <h2 id="processing">Files and Google data processed</h2>
+      <p>Eligible files captured from CLOUDSTICK are copied into private local staging. Their contents and relative filenames are uploaded to the configured Google Drive destination. The application accesses the Drive file and folder information needed to locate, upload and verify those backups. Version 1 does not establish a QA-folder-only inclusion filter; files placed on the USB volume may be included.</p>
+      <p>Verification reads cloud file contents and compares their SHA-256 hashes with the captured local versions. A successful upload alone is not recorded as a verified backup. Historical verification does not continuously detect later changes or deletion in Google Drive.</p>
+    </section>
+
+    <section aria-labelledby="records">
+      <h2 id="records">Local storage and records</h2>
+      <p>The device retains original files, staged contents and manifests. Metadata includes filenames or relative paths, file sizes, hashes, destinations, job status, attempt counts, retry times, timestamps and error codes. USB ownership and recovery records support safe capture. Operational reports and system logs may retain service and diagnostic information. Incomplete staging work may also remain for review.</p>
+      <p>The backup adapter suppresses raw rclone output and records controlled error codes. This does not establish that every operating-system, hosting-provider or manually collected diagnostic log is free of personal information.</p>
+    </section>
+
+    <section aria-labelledby="protection">
+      <h2 id="protection">Credentials and access protection</h2>
+      <p>OAuth access tokens, refresh tokens, client configuration and related preparation records are stored locally. The implementation restricts sensitive files to their service identity using private directories and file permissions, including mode <code>0600</code> credential files. Separate prepared, operational and administrator-created backup copies may remain.</p>
+      <p>These controls are <strong>not encryption at rest</strong>. Device administrators, compromised privileged software or someone able to read an unencrypted card may access stored data and credentials. The ordinary USB storage volume is also accessible to its attached computer; private staging permissions do not encrypt or authenticate that USB volume.</p>
+    </section>
+
+    <section aria-labelledby="transfers">
+      <h2 id="transfers">Data transfers and access by others</h2>
+      <p>Google receives the backup contents and associated metadata. Google’s policies and your Drive sharing settings govern access on its service. The application does not add public sharing as part of the core backup workflow.</p>
+      <p>If the optional remote dashboard is used, dashboard requests, transferred files and OAuth callback traffic pass through its configured tunnel provider. Administrators and people authorized to access the device or dashboard may also access available data. Provider logging and retention are governed by the provider’s configuration and policies.</p>
+      <p>When these public information pages are hosted by GitHub Pages, GitHub records visitors’ IP addresses for security purposes. These pages do not host USB backups or OAuth credentials. See <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages information</a> and the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub privacy statement</a>.</p>
+    </section>
+
+    <section aria-labelledby="dashboard">
+      <h2 id="dashboard">Optional dashboard information</h2>
+      <p>When enabled, the dashboard stores local usernames, roles and password hashes, and uses session and security cookies. Completed web uploads are retained separately. Dashboard access does not itself establish that a file has been backed up to Google Drive.</p>
+    </section>
+
+    <section aria-labelledby="retention">
+      <h2 id="retention">Retention and deletion</h2>
+      <p>Version 1 has no fixed automatic deletion period for originals, staged files, historical versions or backup history. Removing a file from CLOUDSTICK does not automatically delete its retained local copies or cloud versions. Storage can fill, and operator-managed retention is necessary.</p>
+      <p>Revoking Google access does not erase local files, stored credential copies, metadata or existing Drive backups. Deletion requires separate, deliberate handling of local storage, private credential backups and Google Drive contents. Google’s own retention and trash rules apply to data on its service. Comprehensive one-click deletion is not implemented.</p>
+    </section>
+
+    <section aria-labelledby="failures">
+      <h2 id="failures">Connectivity and authorization failures</h2>
+      <p>Without an approved working connection, captured files remain locally stored and uploads pause. Retryable failures use delayed retries. Invalid authorization, local corruption or other non-retryable failures may require operator intervention. Queued or staged data must not be treated as cloud-verified.</p>
+    </section>
+
+    <section aria-labelledby="revoke">
+      <h2 id="revoke">Revoking access</h2>
+      <p>Visit <a href="https://myaccount.google.com/connections">Google Account connections</a>, select this application and remove its access to your Google Account. Future Google operations will require valid authorization. Removing access does not delete data already stored by the application. See <a href="https://support.google.com/accounts/answer/13533235?hl=en">Google’s instructions</a>.</p>
+    </section>
+
+    <section aria-labelledby="contact">
+      <h2 id="contact">Contact</h2>
+      <p>General support and non-sensitive privacy questions can be submitted through the <a href="https://github.com/rtariq2015/raspi-cloud-sync-pro/issues">project’s issue tracker</a>. For private questions, email <a href="mailto:rtariq2014@gmail.com">rtariq2014@gmail.com</a>. Do not publish credentials or personal backup contents in an issue.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="../">Raspi Cloud Sync Pro homepage</a> · Development software</p>
+      <p>Based on <a href="https://github.com/Koseng/RaspiAsUSBStickWithCloudSync">Koseng’s RaspiAsUSBStickWithCloudSync</a>. Distributed under <a href="https://github.com/rtariq2015/raspi-cloud-sync-pro/blob/development/LICENSE">GPL-3.0</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

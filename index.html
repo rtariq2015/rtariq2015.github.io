@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Raspi Cloud Sync Pro is development software for a Raspberry Pi Zero 2 W USB flash drive with Google Drive backup after Windows Safe Eject.">
+  <title>Raspi Cloud Sync Pro — USB to Google Drive backup</title>
+  <link rel="canonical" href="https://rtariq2015.github.io/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="./" aria-current="page">Raspi Cloud Sync Pro</a>
+      <nav aria-label="Main navigation">
+        <a href="privacy/">Privacy policy</a>
+        <a href="https://github.com/rtariq2015/raspi-cloud-sync-pro/issues">Support</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container" tabindex="-1">
+    <p class="eyebrow">Raspberry Pi Zero 2 W · Development software</p>
+    <h1>A USB flash drive that backs up your files to Google Drive.</h1>
+    <p class="lead">Connect Raspi Cloud Sync Pro to Windows with a USB data cable. CLOUDSTICK appears as a normal USB storage drive, with a drive letter assigned by Windows.</p>
+
+    <section aria-labelledby="how-it-works">
+      <h2 id="how-it-works">How Version 1 works</h2>
+      <ol class="steps">
+        <li><strong>Copy files</strong> onto CLOUDSTICK in Windows.</li>
+        <li><strong>Choose Eject</strong> in Windows and leave the cable connected.</li>
+        <li><strong>Capture safely.</strong> The Pi captures eligible files into local staging under verified exclusive filesystem access.</li>
+        <li><strong>Back up over Wi-Fi.</strong> The worker uploads captured files to the configured Google Drive folder using the Pi’s built-in Wi-Fi.</li>
+        <li><strong>Verify the backup.</strong> The worker downloads cloud contents for a SHA-256 check before recording the backup as verified.</li>
+      </ol>
+      <p class="notice"><strong>Safe Eject is required in Version 1.</strong> Automatic capture while Windows continues using the drive is not implemented. Keep the USB cable connected so the Pi stays powered.</p>
+    </section>
+
+    <section aria-labelledby="retention">
+      <h2 id="retention">Local copies stay available</h2>
+      <p>Originals and staged copies are not automatically deleted. When connectivity is unavailable, captured files remain locally queued. Retryable failures are retried; authorization and other permanent failures may require operator attention.</p>
+    </section>
+
+    <section aria-labelledby="development">
+      <h2 id="development">A working development project</h2>
+      <p>The USB-to-Google Drive workflow has been tested under documented conditions. Raspi Cloud Sync Pro is not a finished production release, and verification does not guarantee protection against every hardware, storage or network failure.</p>
+      <p><a href="https://github.com/rtariq2015/raspi-cloud-sync-pro/tree/development">Read the source and development status</a> or review <a href="privacy/">how the application handles your data</a>.</p>
+    </section>
+
+    <section aria-labelledby="support">
+      <h2 id="support">Support</h2>
+      <p>Use the <a href="https://github.com/rtariq2015/raspi-cloud-sync-pro/issues">project issue tracker</a> for general support. Do not post credentials, private files or backup records in public issues. For private questions, email <a href="mailto:rtariq2014@gmail.com">rtariq2014@gmail.com</a>.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Based on <a href="https://github.com/Koseng/RaspiAsUSBStickWithCloudSync">Koseng’s RaspiAsUSBStickWithCloudSync</a>. Distributed under <a href="https://github.com/rtariq2015/raspi-cloud-sync-pro/blob/development/LICENSE">GPL-3.0</a>.</p>
+      <p><a href="privacy/">Privacy policy</a></p>
+    </div>
+  </footer>
+</body>
+</html>

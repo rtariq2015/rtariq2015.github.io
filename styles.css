@@ -1,0 +1,42 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172d3e;
+  background: #f8fafb;
+  line-height: 1.65;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; overflow-wrap: anywhere; }
+.container { width: min(100% - 2.5rem, 48rem); margin-inline: auto; }
+a { color: #075c61; text-decoration-thickness: .09em; text-underline-offset: .18em; }
+a:hover { color: #043d41; }
+a:focus-visible, main:focus-visible { outline: 3px solid #075c61; outline-offset: 5px; }
+.skip-link { position: absolute; top: .5rem; left: 1rem; transform: translateY(-200%); padding: .65rem 1rem; background: #fff; z-index: 1; }
+.skip-link:focus { transform: translateY(0); }
+.site-header { background: #fff; border-bottom: 1px solid #c6d3dc; }
+.header-content { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1.25rem; padding-block: 1.15rem; }
+.brand { color: #172d3e; font-weight: 750; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+nav a { display: inline-block; padding-block: .35rem; }
+[aria-current="page"] { text-decoration-thickness: .16em; }
+main { padding-block: 3rem; overflow-wrap: anywhere; }
+.eyebrow { color: #38556b; font-weight: 650; margin-top: 0; }
+h1, h2 { line-height: 1.2; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 5vw, 2.75rem); letter-spacing: -.025em; margin: .6rem 0 1.25rem; }
+h2 { font-size: 1.4rem; margin: 0 0 .8rem; }
+p { margin: .8rem 0; }
+.lead { font-size: 1.15rem; }
+section { margin-top: 2.5rem; }
+.steps { padding-left: 1.6rem; }
+.steps li { padding-left: .25rem; margin-block: .8rem; }
+.notice { background: #eaf3f3; border-left: .3rem solid #075c61; padding: 1rem 1.2rem; margin-block: 1.5rem; }
+code { font-size: .95em; overflow-wrap: anywhere; }
+.site-footer { border-top: 1px solid #c6d3dc; background: #fff; padding-block: 1.2rem 1.5rem; font-size: .95rem; }
+
+@media (max-width: 36rem) {
+  .container { width: calc(100% - 2rem); }
+  .header-content { align-items: flex-start; flex-direction: column; }
+  main { padding-block: 2rem; }
+  .notice { padding: .9rem 1rem; }
+}
